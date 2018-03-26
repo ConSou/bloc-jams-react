@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Landing = () => (
-  <section className="landing">
+  <section className="Landing">
     Landing page will go here
   </section>
 );
