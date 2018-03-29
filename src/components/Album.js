@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import albumData from './../data/album';
 
+
 class Album extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     const album = albumData.find( album => {
@@ -11,8 +12,9 @@ class Album extends Component {
 
     this.state = {
       album: album
-    }
+    };
   }
+
   render() {
     return (
       <section className="Album">
@@ -21,7 +23,7 @@ class Album extends Component {
           <div className="album-details">
             <h1 id="album-title">{this.state.album.title}</h1>
             <h2 className="artist">{this.state.album.artist}</h2>
-            <div id="release-info">{this.state.album.releaseInfo}</div>
+            <div id="release-info">{this.state.album.releaseInfo} </div>
           </div>
         </section>
         <table id="song-list">
@@ -30,7 +32,16 @@ class Album extends Component {
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody>
+          <tbody className="song-row">
+          {
+            this.state.album.songs.map((song, index) =>
+            <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{song.title}</td>
+            <td>{song.duration}</td>
+            </tr>
+            )
+          }
           </tbody>
         </table>
       </section>
