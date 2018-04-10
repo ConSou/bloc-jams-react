@@ -15,6 +15,7 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
+      hoverPlaying: false,
       currentTime: 0,
       duration: album.songs[0].duration,
       currentVolume: 0.80
@@ -22,6 +23,7 @@ class Album extends Component {
 
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
+
   }
 
   componentDidMount(){
@@ -66,6 +68,8 @@ class Album extends Component {
       if (!isSameSong) { this.setSong(song); }
       this.play();
     }
+    console.log(this.state.isPlaying)
+    console.log(this.state.currentSong)
   }
 
   handlePrevClick(){
@@ -122,8 +126,7 @@ class Album extends Component {
     }
 
 
-
-  render() {
+  render(){
     return (
       <section className="Album">
         <section id="album-info">
@@ -140,16 +143,16 @@ class Album extends Component {
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody className="song-row">
+          <tbody>
           {
             this.state.album.songs.map((song, index) =>
-            <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
-              <td className="song-actions">
-                <button>
-                  <span className="song-number">{index + 1}</span>
+            <tr className={this.state.isPlaying && this.state.currentSong === song ? 'playing':'paused'} key={index} onClick={() => this.handleSongClick(song)}>
+              <td className={this.state.isPlaying && this.state.currentSong === song ? 'playing':'paused'}>
+              <button>
+                  <span className="song-number">{index +1}</span>
                   <span className="ion-play"></span>
                   <span className="ion-pause"></span>
-                </button>
+                  </button>
               </td>
               <td className="song-title">{song.title}</td>
               <td className="song-duration">{this.formatTime(song.duration)}</td>

@@ -1,10 +1,10 @@
 
 body{
-    background: url(./data/background.svg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: url(./data/background.svg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .logo{
@@ -19,7 +19,21 @@ margin-top: 12px;
 }
 
 .main-nav{
-  margin-left: 800px;
+  margin-top: -25px;
+  margin-left: 825px;
+}
+
+.linkes{
+  text-decoration: none;
+  color: white;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  margin-left: 30px;
+}
+
+.linkes:hover{
+  color: #BEE8FE;
 }
 
 .slide{
@@ -75,4 +89,18 @@ margin-top: 12px;
 #song-list{
   display: inline-block;
   margin-left: 570px;
+}
+
+tr:hover .ion-play,
+tr.playing .ion-pause{
+ display: block;
+}
+
+tr.playing .song-number,
+tr .ion-play,
+tr .ion-pause,
+tr:hover .song-number,
+tr.playing .ion-play,
+tr.paused .ion-pause{
+ display: none;
 }
