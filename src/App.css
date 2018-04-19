@@ -1,5 +1,6 @@
+/* Landing  */
 
-body{
+html{
   background: url(./data/background.svg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -7,78 +8,102 @@ body{
   background-size: cover;
 }
 
+/* Top bar */
+
 .logo{
 height: 25px;
-margin-left: 15px;
-margin-top: 12px;
+position: absolute;
+left: 15px;
+top: 12px;
 }
 
 .top-bar{
-  background-color: grey;
+  background-color: #a0a0a0;
   height: 50px;
 }
 
-.main-nav{
-  margin-top: -25px;
-  margin-left: 825px;
-}
-
-.linkes{
+.linkes-landing{
   text-decoration: none;
   color: white;
-  margin-top: -20px;
-  margin-bottom: 30px;
-  margin-right: 10px;
-  margin-left: 30px;
+  position: absolute;
+  left: 86%;
+  top: 2.5%;
 }
 
-.linkes:hover{
+.linkes-landing:hover{
   color: #BEE8FE;
 }
+
+.linkes-library{
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  left: 93%;
+  top: 2.5%;
+}
+
+.linkes-library:hover{
+  color: #BEE8FE;
+}
+
+/* landing Slides */
 
 .slide{
   text-align: center;
   margin-top: 150px;
   color: white;
-  font-size: 80px;
+  font-size: 70px;
 }
 
 .point-description{
   margin-top: -70px;
-  font-size: 15px;
+  font-size: 24px;
+}
+
+/* Library */
+
+.album-art{
+  display: inline-block;
 }
 
 .album-img{
   display: inline-block;
+  margin-left: 50px;
+  margin-top: 50px;
   height: 250px;
   width: 250px;
+  box-shadow: 2px 5px 5px grey;
 }
 
-.album-img-empt{
-  display: inline-block;
-  height: 250px;
-  width: 250px;
-  background-color: grey;
+.album-img:hover{
+  height: 260px;
+  width: 260px;
 }
+
+.album-info{
+  margin-left: 50px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Album Page */
 
 #album-cover-art{
-  margin-left: 25px;
-  margin-top: 25px;
-  height: 500px;
-  width: 500px;
-}
-
-.album-details{
-  display: inline-block;
-  margin-left: 50px;
+  position: absolute;
+  left: 3%;
+  top: 15%;
+  height: 400px;
+  width: 400px;
+  box-shadow: 2px 5px 5px grey;
 }
 
 #album-title{
   font-size: 60px;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 }
 
 .artist{
+  position: relative;
   color: white;
 }
 
@@ -86,21 +111,211 @@ margin-top: 12px;
   color: white;
 }
 
-#song-list{
+.album-details{
   display: inline-block;
-  margin-left: 570px;
+  position: absolute;
+  top: 2rem;
+  left: 30rem;
 }
 
+#song-list{
+  border-collapse: collapse;
+  clear: both;
+  font-weight: 100;
+  margin-top: 3rem;
+  overflow: hidden;
+  width: 61%;
+  height: 252px;
+  position: absolute;
+  top: 200px;
+  margin-left: 465px;
+
+}
+
+#song-number-column {
+  width: 40px;
+}
+
+#song-duration-column {
+  width: 80px;
+}
+
+tr {
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  background: hsla(0, 0%, 0%, 0.01);
+  transition: all 0.2s ease;
+}
+
+tr:focus {
+  outline: aliceblue;
+}
+
+tr:hover {
+  background: hsla(0, 0%, 0%, 0.05);
+  cursor: pointer;
+}
+
+tr.playing {
+  background: hsla(0, 0%, 0%, 0.1);
+}
+
+tr:hover .song-title {
+  color: hsla(0, 0%, 100%, 1);
+}
+
+tr:last-child {
+  border: none;
+}
+
+td {
+  padding: 0.75rem;
+}
+
+tr button {
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+}
+
+tr button:focus {
+  outline: none;
+  text-shadow: 2px 4px 3px hsla(0,0%,0%,0.25);
+}
+
+tr button:focus .song-number {
+  display: none;
+}
+tr button:focus .ion-play {
+  display: block;
+}
+
+tr.playing button:focus .song-number,
+tr.playing button:focus .ion-play {
+  display: none;
+}
+
+tr.playing button:focus .ion-pause {
+  display: block;
+}
+
+
+.song-number {
+  color: hsla(0, 0%, 100%, 0.66);
+}
+
+.song-title {
+  color: hsla(0, 0%, 100%, 0.9);
+}
+
+.song-duration {
+  color: hsla(0, 0%, 100%, 0.5);
+  text-align: right;
+}
+
+/* Buttons */
 tr:hover .ion-play,
-tr.playing .ion-pause{
+tr.playing .ion-pause,
+td.paused .ion-play{
  display: block;
 }
 
 tr.playing .song-number,
+td.paused .song-number,
 tr .ion-play,
 tr .ion-pause,
 tr:hover .song-number,
 tr.playing .ion-play,
 tr.paused .ion-pause{
  display: none;
+}
+
+
+/* Player Bar */
+
+.player-bar {
+  background: hsla(0, 0%, 0%, 0.1);
+  bottom: 0;
+  height: 90px;
+  position: fixed;
+  width: 100%;
+}
+
+#buttons {
+  width: 300px;
+  position: absolute;
+  left: 44.7%;
+}
+
+#buttons button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1.2rem;
+  color: hsla(0, 0%, 100%, 0.5);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#buttons button:hover, #buttons button:focus {
+  outline: none;
+  color: hsla(0, 0%, 100%, 1);
+  text-shadow: 2px 4px 3px hsla(0,0%,0%,0.25);
+}
+
+#buttons #play-pause {
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: 2rem;
+  margin: 0.5rem 1rem 0;
+  transform: translateY(0.3rem);
+}
+
+#buttons #play-pause:hover {
+  color: hsla(0, 0%, 100%, 1);
+}
+
+/* Time Control */
+
+#time-control{
+  position: absolute;
+  left: 44%;
+  top: 55%;
+  font-size: 0.9rem;
+  width: 20px;
+}
+
+.current-time{
+  position: absolute;
+  top: 1px;
+  right: 25px;
+}
+
+.total-time{
+  position: absolute;
+  left: 140px;
+  top: 1px;
+}
+
+/* Volume Controls */
+
+#volume-control{
+  display: inline-block;
+  position: absolute;
+  left: 80%;
+  top: 55%;
+}
+
+.ion-volume-low, .ion-volume-mute{
+  position: absolute;
+  display: inline-block;
+  left: -15px;
+  top: 2px;
+}
+
+.ion-volume-high{
+  position: absolute;
+  display: inline-block;
+  left: 140px;
+  top: 2px;
 }

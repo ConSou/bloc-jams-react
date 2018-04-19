@@ -27,8 +27,9 @@ class PlayerBar extends Component {
             onChange={this.props.handleTimeChange}
             />
           <div className="total-time">{this.props.formatTime(this.props.duration)}</div>
+          </section>
         <section id="volume-control">
-          <div className="icon ion-volume-low"></div>
+          <div className={this.props.audioElement.volume === 0 ? 'ion-volume-mute':'ion-volume-low'} onClick={this.props.handleMute}></div>
           <input
             type="range"
             className="seek-bar"
@@ -39,11 +40,6 @@ class PlayerBar extends Component {
             onChange={this.props.handleVolumeChange}
             />
           <div className="icon ion-volume-high"></div>
-          <button className='mute' onClick={this.props.handleMute}>
-            <div className="ion-volume-mute"></div>
-
-          </button>
-        </section>
         </section>
       </section>
     );

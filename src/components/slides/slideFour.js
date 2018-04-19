@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const SlideFour = (props) => {
   return <div className="slide">

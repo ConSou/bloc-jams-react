@@ -17,13 +17,13 @@ class Landing extends Component {
   }
 
 componentDidMount(){
-  setInterval(() => {
+  this.landingSlides = setInterval(() => {
   this.nextSlide()
 
   }, 3000);
 }
 componentWillUnmount() {
-  clearInterval(this.setInterval);
+  clearInterval(this.landingSlides);
 }
 
   nextSlide(){

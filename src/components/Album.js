@@ -15,7 +15,6 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
-      hoverPlaying: false,
       currentTime: 0,
       duration: album.songs[0].duration,
       currentVolume: 0.80
@@ -68,8 +67,6 @@ class Album extends Component {
       if (!isSameSong) { this.setSong(song); }
       this.play();
     }
-    console.log(this.state.isPlaying)
-    console.log(this.state.currentSong)
   }
 
   handlePrevClick(){
@@ -125,7 +122,6 @@ class Album extends Component {
 
     }
 
-
   render(){
     return (
       <section className="Album">
@@ -147,7 +143,7 @@ class Album extends Component {
           {
             this.state.album.songs.map((song, index) =>
             <tr className={this.state.isPlaying && this.state.currentSong === song ? 'playing':'paused'} key={index} onClick={() => this.handleSongClick(song)}>
-              <td className={this.state.isPlaying && this.state.currentSong === song ? 'playing':'paused'}>
+              <td className={this.state.currentSong === song && this.audioElement.paused ? 'paused':'playing'}>
               <button>
                   <span className="song-number">{index +1}</span>
                   <span className="ion-play"></span>
@@ -174,6 +170,7 @@ class Album extends Component {
         handleVolumeChange={ (e) => this.handleVolumeChange(e) }
         handleMute={ (e) => this.handleMute(e) }
         formatTime={ (seconds) => this.formatTime(seconds) }
+        audioElement={this.audioElement}
         />
       </section>
     );
